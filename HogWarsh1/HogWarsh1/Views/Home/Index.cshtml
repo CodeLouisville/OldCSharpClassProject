@@ -18,11 +18,23 @@
 </div>
 <div class="row">
     <h2>Our Houses</h2>
-    <dl class="dl-horizontal">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>House</th>
+                <th>Description</th>
+                <th>Students</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
         @foreach (var house in Model.Houses)
         {
-            <dt>@house.Name</dt>
-            <dd>@house.Description</dd>
+            <tr>
+                <td>@house.House.Name</td>
+                <td>@house.House.Description</td>
+                <td>@house.NumberOfStudents</td>
+            </tr>
         }
-    </dl>
+    </table>
 </div>

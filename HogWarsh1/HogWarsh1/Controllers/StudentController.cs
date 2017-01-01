@@ -23,11 +23,14 @@ namespace HogWarsh1.Controllers
         public ActionResult Enroll(StudentEnrollViewModel studentvm)
         {
             // TODO: put in database and send user somewhere
-            
+
+            studentvm.Student.House = InMemoryDatabase.GetAllHouses().First().Name;
+            InMemoryDatabase.SaveStudent(studentvm.Student);
+
             // when demoing this, show the generated HTML from the previous commit vs this commit, how the input fields
             // change as you change view models
 
-            return View(studentvm);
+            return RedirectToAction("Index", "Home", new { });
         }
 
         public class StudentEnrollViewModel

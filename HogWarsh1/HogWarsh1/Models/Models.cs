@@ -60,6 +60,16 @@ namespace HogWarsh1.Models
         {
             return Species; 
         }
+
+        internal static void SaveStudent(Student student)
+        {
+            Students.Add(student);
+        }
+
+        internal static List<Student> GetStudentsForHouse(string name)
+        {
+            return Students.Where(s => s.House == name).ToList();
+        }
     }
 
 }

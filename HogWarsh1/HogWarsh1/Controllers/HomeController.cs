@@ -11,10 +11,18 @@ namespace HogWarsh1.Controllers
     {
         public ActionResult Index()
         {
-            var vm = new HomeIndexViewModel
+            var vm = new HomeIndexViewModel(); 
+            var allHouses = InMemoryDatabase.GetAllHouses(); 
+            foreach (var house in allHouses)
             {
-                Houses = InMemoryDatabase.GetAllHouses()
-            };
+                var students = InMemoryDatabase.GetStudentsForHouse(house.Name);
+                vm.Houses.Add(new HomeIndexViewModel.HouseWithCountViewModel
+                {
+                    House = house,
+                    NumberOfStudents = students.Count()
+                });
+            }
+
             return View(vm);
         }
 
@@ -34,7 +42,18 @@ namespace HogWarsh1.Controllers
 
         public class HomeIndexViewModel
         {
-            public List<House> Houses { get; set; } 
+            public HomeIndexViewModel()
+            {
+                Houses = new List<HouseWithCountViewModel>();
+            }
+            public List<HouseWithCountViewModel> Houses { get; set; } 
+
+            public class HouseWithCountViewModel
+            {
+                public House House { get; set; }
+                public int NumberOfStudents { get; set; }
+            }
+
         }
     }
 }
