@@ -1,4 +1,4 @@
-﻿@model HogWarsh1.Models.Student
+﻿@model HogWarsh1.Controllers.StudentController.StudentEnrollViewModel
 @{
     ViewBag.Title = "Enroll";
 }
@@ -8,16 +8,25 @@
 @using (Html.BeginForm("enroll", "student"))
 {
     <h2>This bit is hand-written: </h2>
-    <dl>
-        <dt>@Html.LabelFor(x => x.Name)</dt>
-        <dd>@Html.EditorFor(x => x.Name)</dd>
+        <dl>
+            <dt>@Html.LabelFor(x => x.Student.Name)</dt>
+            <dd>@Html.EditorFor(x => x.Student.Name)</dd>
 
-        <dt>@Html.LabelFor(x => x.Species)</dt>
-        <dd>@Html.EditorFor(x => x.Species)</dd>
-    </dl>
-    <h2>This bit is auto-generated:</h2>
-    <p>
-        @Html.EditorFor(x => x)
-    </p>
-    <input type="submit" value="Enroll!" />
+            <dt>@Html.LabelFor(x => x.Student.Species)</dt>
+            <dd>@Html.EditorFor(x => x.Student.Species)</dd>
+
+            <dt>
+                @Html.DropDownListFor(
+                    x => x.Student.House,
+                    Model.Houses.Select(x =>
+                        new SelectListItem()
+                        {
+                            Text = x.Name,
+                            Value = x.Name
+                        }
+                    )
+                )
+            </dt>
+        </dl>
+        <input type="submit" value="Enroll!" />
 }
