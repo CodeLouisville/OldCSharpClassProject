@@ -70,6 +70,12 @@ namespace HogWarsh1.Models
         {
             return Students.Where(s => s.House == name).ToList();
         }
+
+
+        internal static List<Student> GetStudentsWithoutAHouse()
+        {
+            return Students.Where(s => String.IsNullOrEmpty(s.House)).ToList(); 
+        }
     }
 
 }

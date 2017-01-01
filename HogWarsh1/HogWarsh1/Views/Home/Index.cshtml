@@ -28,7 +28,7 @@
         </thead>
         <tbody>
         </tbody>
-        @foreach (var house in Model.Houses)
+        @foreach (var house in Model.HousesWithCounts)
         {
             <tr>
                 <td>@house.House.Name</td>
@@ -37,4 +37,7 @@
             </tr>
         }
     </table>
+
+    <p>Some students have not yet chosen a house:  </p>
+    <p class="lead">@Model.StudentsWithoutHouses</p>
 </div>
