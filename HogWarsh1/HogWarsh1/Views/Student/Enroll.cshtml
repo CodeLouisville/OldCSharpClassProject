@@ -1,0 +1,16 @@
+﻿@model HogWarsh1.Models.Student
+@{
+    ViewBag.Title = "Enroll";
+}
+
+<p>To Enroll your student, we need some information:</p>
+
+@using (Html.BeginForm("enroll", "student"))
+{
+    @Html.LabelFor(x => x.Name)
+    @Html.EditorFor(x => x.Name)
+
+    @Html.LabelFor(x => x.Species)
+    @Html.EditorFor(x => x.Species)
+
+}
