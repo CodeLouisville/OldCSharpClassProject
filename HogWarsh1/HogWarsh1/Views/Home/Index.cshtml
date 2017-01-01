@@ -1,4 +1,5 @@
-﻿@{
+﻿@model HogWarsh1.Controllers.HomeController.HomeIndexViewModel
+@{
     ViewBag.Title = "Home Page";
 }
 
@@ -17,5 +18,11 @@
 </div>
 <div class="row">
     <h2>Our Houses</h2>
-    <p>TODO: Write some code to list the houses here</p>
+    <dl class="dl-horizontal">
+        @foreach (var house in Model.Houses)
+        {
+            <dt>@house.Name</dt>
+            <dd>@house.Description</dd>
+        }
+    </dl>
 </div>

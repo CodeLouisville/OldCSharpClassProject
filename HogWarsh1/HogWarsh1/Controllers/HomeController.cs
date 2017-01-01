@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HogWarsh1.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,7 +11,11 @@ namespace HogWarsh1.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            var vm = new HomeIndexViewModel
+            {
+                Houses = InMemoryDatabase.GetAllHouses()
+            };
+            return View(vm);
         }
 
         public ActionResult About()
@@ -25,6 +30,11 @@ namespace HogWarsh1.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        public class HomeIndexViewModel
+        {
+            public List<House> Houses { get; set; } 
         }
     }
 }

@@ -23,7 +23,7 @@ namespace HogWarsh1.Models
         public static List<House> Houses { get; private set; }
         public static List<Student> Students { get; private set; }
 
-        public InMemoryDatabase()
+        static InMemoryDatabase()
         {
             Houses = new List<House>() {
                 new Models.House() {
@@ -37,6 +37,12 @@ namespace HogWarsh1.Models
                 }
             };
             Students = new List<Student> { };
+        }
+
+        internal static List<House> GetAllHouses()
+        {
+            // this would become something that talks to the real database
+            return Houses; 
         }
     }
 
