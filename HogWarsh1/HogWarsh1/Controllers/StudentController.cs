@@ -14,7 +14,7 @@ namespace HogWarsh1.Controllers
         {
             var vm = new StudentEnrollViewModel() {
                 Student = new Student(),
-                Houses = InMemoryDatabase.GetAllHouses()
+                Species = InMemoryDatabase.GetAllSpecies()
             };
             return View(vm);
         }
@@ -35,7 +35,7 @@ namespace HogWarsh1.Controllers
             // could move this out to Models.
 
             public Student Student { get; set; }
-            public List<House> Houses { get; set; }
+            public List<Species> Species { get; set; }
         }
 
     }

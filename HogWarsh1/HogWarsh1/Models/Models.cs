@@ -18,10 +18,16 @@ namespace HogWarsh1.Models
         public string Description { get; set; }
     }
 
+    public class Species
+    {
+        public string Name { get; set; }
+    }
+
     public class InMemoryDatabase
     {
         public static List<House> Houses { get; private set; }
         public static List<Student> Students { get; private set; }
+        public static List<Species> Species { get; private set; }
 
         static InMemoryDatabase()
         {
@@ -36,6 +42,11 @@ namespace HogWarsh1.Models
                     Description = "Wagabonds"
                 }
             };
+            Species = new List<Species>
+            {
+                new Models.Species { Name="Feline" },
+                new Models.Species {Name = "Canine" }
+            };
             Students = new List<Student> { };
         }
 
@@ -43,6 +54,11 @@ namespace HogWarsh1.Models
         {
             // this would become something that talks to the real database
             return Houses; 
+        }
+
+        internal static List<Species> GetAllSpecies()
+        {
+            return Species; 
         }
     }
 

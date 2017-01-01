@@ -12,13 +12,10 @@
             <dt>@Html.LabelFor(x => x.Student.Name)</dt>
             <dd>@Html.EditorFor(x => x.Student.Name)</dd>
 
-            <dt>@Html.LabelFor(x => x.Student.Species)</dt>
-            <dd>@Html.EditorFor(x => x.Student.Species)</dd>
-
             <dt>
                 @Html.DropDownListFor(
-                    x => x.Student.House,
-                    Model.Houses.Select(x =>
+                    x => x.Student.Species,
+                    Model.Species.Select(x =>
                         new SelectListItem()
                         {
                             Text = x.Name,
