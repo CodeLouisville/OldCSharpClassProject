@@ -31,12 +31,43 @@ namespace HogWarsh1.Controllers
             return RedirectToAction("Index", "Home", new { });
         }
 
+        public ActionResult Sort()
+        {
+            var vm = new StudentSortingViewModel()
+            {
+                StudentsToSort = InMemoryDatabase.GetStudentsWithoutAHouse()
+            };
+            foreach (var house in InMemoryDatabase.GetAllHouses())
+            {
+                var students = InMemoryDatabase.GetStudentsForHouse(house.Name);
+                vm.HousesWithStudents[house.Name] = students; 
+            }
+
+            return View(vm);
+        }
+
+        public ActionResult DoTheSort()
+        {
+            throw new NotImplementedException();
+        }
+
         public class StudentEnrollViewModel
         {
             // could move this out to Models.
 
             public Student Student { get; set; }
             public List<Species> Species { get; set; }
+        }
+
+        public class StudentSortingViewModel
+        {
+            public List<Student> StudentsToSort { get; set; }
+            public Dictionary<string, List<Student>> HousesWithStudents { get; set; }
+            public StudentSortingViewModel()
+            {
+                StudentsToSort = new List<Student>();
+                HousesWithStudents = new Dictionary<string, List<Student>>();
+            }
         }
 
     }

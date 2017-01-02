@@ -26,8 +26,7 @@
                 <th>Students</th>
             </tr>
         </thead>
-        <tbody>
-        </tbody>
+        <tbody></tbody>
 
         @foreach (var house in Model.HousesWithCounts)
         {
@@ -41,4 +40,11 @@
 
     <p>Some students have not yet chosen a house:  </p>
     <p class="lead">@Model.StudentsWithoutHouses</p>
+    @if (Model.StudentsWithoutHouses > 2)
+    {
+        <p>We gave enough students to have a sorting!</p>
+        <p class="text-center">
+            @Html.ActionLink("ENGAGE the Shorting Leash!", "sort", "student", new { }, new { @class = "btn btn-info" })
+        </p>
+    }
 </div>

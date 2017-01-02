@@ -1,0 +1,42 @@
+﻿@model HogWarsh1.Controllers.StudentController.StudentSortingViewModel
+@{
+    ViewBag.Title = "Sort";
+}
+
+<div class="row">
+    <h2>The Sort Leash</h2>
+</div>
+<div class="row">
+    <h2>The following students sit here awaiting a sorting:</h2>
+</div>
+<div class="row">
+    <ul>
+        @foreach (var student in Model.StudentsToSort)
+        {
+            <li>
+                @student.Name
+            </li>
+        }
+    </ul>
+</div>
+<div class="row">
+    @Html.ActionLink("Sort", "doTheSort", "student", new { }, new { @class = "btn btn-info" })
+</div>
+<div class="row">
+    @foreach (var house in Model.HousesWithStudents.Keys.OrderBy(x => x))
+    {
+        <div class="col-md-4">
+            @{
+                var students = Model.HousesWithStudents[house].OrderBy(x => x.Name).ToList();
+
+                <h2>House @house</h2>
+                <ul>
+                    @foreach (var student in students)
+                {
+                        <li>@student.Name</li>
+                    }
+                </ul>
+            }
+        </div>
+                }
+</div>

@@ -57,7 +57,13 @@ namespace HogWarsh1.Models
                 new Models.Species { Name="Feline" },
                 new Models.Species {Name = "Canine" }
             };
-            Students = new List<Student> { };
+            Students = new List<Student> {
+                new Student {  Name="Garfield", Species="Feline", House="Nommy Nom"},
+                new Student { Name="Odie", Species = "Canine" },
+                new Student { Name="Marmaduke", Species="Canine" },
+                new Student { Name="Lassie", Species="Canine" },
+                new Student { Name="Mr Mistopholes", Species="Feline" }
+            };
         }
 
         internal static List<House> GetAllHouses()
