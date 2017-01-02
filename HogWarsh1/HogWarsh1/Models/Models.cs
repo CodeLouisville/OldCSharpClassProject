@@ -33,13 +33,23 @@ namespace HogWarsh1.Models
         {
             Houses = new List<House>() {
                 new Models.House() {
-                    Name="Garfieldor",
-                    Description="Furry Feline Unfrenzy"
+                    Name="Wagabond",
+                    Description="Free spirited"
                 },
                 new House()
                 {
-                    Name="Odiferous",
-                    Description = "Wagabonds"
+                    Name="Whiskerful",
+                    Description = "Sensitive"
+                },
+                                new House()
+                {
+                    Name="Pawntiferous",
+                    Description = "Likes to move a lot."
+                },
+                new House()
+                {
+                    Name="Nommy Nom",
+                    Description = "Yes, I'd like a treat with that."
                 }
             };
             Species = new List<Species>
@@ -53,12 +63,12 @@ namespace HogWarsh1.Models
         internal static List<House> GetAllHouses()
         {
             // this would become something that talks to the real database
-            return Houses; 
+            return Houses;
         }
 
         internal static List<Species> GetAllSpecies()
         {
-            return Species; 
+            return Species;
         }
 
         internal static void SaveStudent(Student student)
@@ -74,7 +84,7 @@ namespace HogWarsh1.Models
 
         internal static List<Student> GetStudentsWithoutAHouse()
         {
-            return Students.Where(s => String.IsNullOrEmpty(s.House)).ToList(); 
+            return Students.Where(s => String.IsNullOrEmpty(s.House)).ToList();
         }
     }
 
