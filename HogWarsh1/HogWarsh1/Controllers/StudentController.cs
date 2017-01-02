@@ -33,6 +33,13 @@ namespace HogWarsh1.Controllers
 
         public ActionResult Sort()
         {
+            StudentSortingViewModel vm = GetSortingViewModel();
+
+            return View(vm);
+        }
+
+        private static StudentSortingViewModel GetSortingViewModel()
+        {
             var vm = new StudentSortingViewModel()
             {
                 StudentsToSort = InMemoryDatabase.GetStudentsWithoutAHouse()
@@ -40,15 +47,25 @@ namespace HogWarsh1.Controllers
             foreach (var house in InMemoryDatabase.GetAllHouses())
             {
                 var students = InMemoryDatabase.GetStudentsForHouse(house.Name);
-                vm.HousesWithStudents[house.Name] = students; 
+                vm.HousesWithStudents[house.Name] = students;
             }
 
-            return View(vm);
+            return vm;
         }
 
         public ActionResult DoTheSort()
         {
-            throw new NotImplementedException();
+            var vm = GetSortingViewModel();
+            var rand = new Random();
+            var housesToChooseFrom = vm.HousesWithStudents.Keys.ToList();  
+            foreach (var student in vm.StudentsToSort)
+            {
+                var houseIndex = rand.Next(0, housesToChooseFrom.Count);
+                var house = housesToChooseFrom[houseIndex];
+                student.House = house;
+                InMemoryDatabase.SaveStudent(student);
+            }
+            return RedirectToAction("Sort");
         }
 
         public class StudentEnrollViewModel

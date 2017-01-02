@@ -79,8 +79,20 @@ namespace HogWarsh1.Models
 
         internal static void SaveStudent(Student student)
         {
-            Students.Add(student);
+            var existingStudent = Students.FirstOrDefault(s => s.Name == student.Name);
+            if (existingStudent != null)
+            {
+                // student already exists, this was an update.
+                existingStudent.House = student.House;
+                existingStudent.Species = student.Species;
+            }
+            else
+            {
+                // this was an insert. 
+                Students.Add(student);
+            }
         }
+
 
         internal static List<Student> GetStudentsForHouse(string name)
         {
