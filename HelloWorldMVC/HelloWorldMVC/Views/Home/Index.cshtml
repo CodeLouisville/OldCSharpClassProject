@@ -7,6 +7,8 @@
     <h1>HELLO!</h1>
 </div>
 
+@using (var form = Html.BeginForm("SayHello", "Home"))
+{
 <div class="row">
     <p>Hey, what's your name?</p>
     <p>
@@ -17,4 +19,6 @@
         Last Name:
         @Html.TextBoxFor(x => x.LastName)
     </p>
+    <input type="submit" value="That's Me"/>
 </div>
+}
