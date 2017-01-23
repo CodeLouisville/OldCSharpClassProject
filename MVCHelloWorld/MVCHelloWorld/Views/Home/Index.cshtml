@@ -1,0 +1,15 @@
+﻿@model MVCHelloWorld.Models.Person
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Whats Your Name</h1>
+    @using (var form = Html.BeginForm("SayHello", "Home"))
+    {
+        <p>First Name: @Html.TextBoxFor(x => x.FirstName)</p>
+        <br />
+        <p>Last Name: @Html.TextBoxFor(x => x.LastName)</p>
+        <input type="submit" value="Submit1" name="Submit2"/>
+    }
+</div>
