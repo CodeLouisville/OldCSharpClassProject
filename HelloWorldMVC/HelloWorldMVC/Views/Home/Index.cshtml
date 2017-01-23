@@ -7,10 +7,23 @@
     <h1>HELLO!</h1>
 </div>
 
+@{ 
+    string lastLetter = "";
+}
 <table class="table table-striped">
     <tr><th>First Name</th><th>Last Name</th></tr>
     @foreach (var person in Model.Persons.OrderBy(p => p.LastName))
     {
+        var thisLetter = person.LastName.Substring(0, 1);
+        if (lastLetter != thisLetter)
+        {
+            <tr>
+                <td colspan="2" class="text-info">
+                    @thisLetter
+                </td>
+            </tr>
+            lastLetter = thisLetter; 
+        }
         <tr>
             <td>@person.FirstName</td>
             <td>@person.LastName</td>
