@@ -12,15 +12,15 @@ namespace HelloWorldMVC.Controllers
         public ActionResult Index()
         {
 
-            var studentModel = new Student();
+            var personModel = new Person();
 
-            return View("Index",studentModel);
+            return View("Index",personModel);
         }
 
-        public ActionResult SayHello(Student student)
+        public ActionResult SayHello(Person person)
         {
-            student.FirstName = student.FirstName.ToUpperInvariant();
-            return View("SayHello",student);
+            person.FirstName = person.FirstName.ToUpperInvariant();
+            return View("SayHello",person);
         }
 
         public ActionResult About()

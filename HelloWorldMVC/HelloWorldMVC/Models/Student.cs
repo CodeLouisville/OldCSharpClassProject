@@ -5,7 +5,7 @@ using System.Web;
 
 namespace HelloWorldMVC.Models
 {
-    public class Student
+    public class Person
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
