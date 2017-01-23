@@ -1,4 +1,4 @@
-﻿@model HelloWorldMVC.Models.Student
+﻿@model HelloWorldMVC.Models.Home.ListOfPersonsViewModel
 @{
     ViewBag.Title = "Home Page";
 }
@@ -7,18 +7,29 @@
     <h1>HELLO!</h1>
 </div>
 
-@using (var form = Html.BeginForm("SayHello", "Home"))
-{
-<div class="row">
-    <p>Hey, what's your name?</p>
-    <p>
-        First Name:
-        @Html.TextBoxFor(x => x.FirstName)
-    </p>
-    <p>
-        Last Name:
-        @Html.TextBoxFor(x => x.LastName)
-    </p>
-    <input type="submit" value="That's Me"/>
-</div>
-}
+<table class="table table-striped">
+    <tr><th>First Name</th><th>Last Name</th></tr>
+    @foreach (var person in Model.Persons.OrderBy(p => p.LastName))
+    {
+        <tr>
+            <td>@person.FirstName</td>
+            <td>@person.LastName</td>
+        </tr>
+    }
+</table>
+
+@*@using (var form = Html.BeginForm("SayHello", "Home"))
+    {
+    <div class="row">
+        <p>Hey, what's your name?</p>
+        <p>
+            First Name:
+            @Html.TextBoxFor(x => x.FirstName)
+        </p>
+        <p>
+            Last Name:
+            @Html.TextBoxFor(x => x.LastName)
+        </p>
+        <input type="submit" value="That's Me"/>
+    </div>
+    }*@
