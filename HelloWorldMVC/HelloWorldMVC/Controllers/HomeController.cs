@@ -12,6 +12,13 @@ namespace HelloWorldMVC.Controllers
     {
         public ActionResult Index()
         {
+            var personModel = new Person();
+
+            return View("Index", personModel);
+        }
+
+        public ActionResult List()
+        {
             var model = new ListOfPersonsViewModel()
             {
                 Persons = new List<Person>
@@ -26,13 +33,13 @@ namespace HelloWorldMVC.Controllers
                 }
             };
 
-            return View("Index", model);
+            return View("List", model);
         }
 
         public ActionResult SayHello(Person person)
         {
             person.FirstName = person.FirstName.ToUpperInvariant();
-            return View("SayHello",person);
+            return View("SayHello", person);
         }
 
         public ActionResult About()
