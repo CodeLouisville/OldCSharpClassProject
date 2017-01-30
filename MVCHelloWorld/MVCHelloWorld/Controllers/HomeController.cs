@@ -22,9 +22,9 @@ namespace MVCHelloWorld.Controllers
 
         public ActionResult SayHello(Person person)
         {
-            PersonRepository.AddPerson(person); 
+            PersonRepository.AddPerson(person);
 
-            return View("ShowMeAList",PersonRepository.GetAllPersons());
+            return RedirectToAction("ShowMeAList", "Home");
         }
 
         public ActionResult ShowMeAList()
