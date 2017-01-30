@@ -1,0 +1,21 @@
+﻿@model List<MVCHelloWorld.Models.Person>
+
+@{
+    ViewBag.Title = "SayHello";
+}
+
+<p>Here's everybody: </p>
+<table class="table table-striped">
+    <tr>
+        <th>FirstName</th>
+        <th>LastName</th>
+    </tr>
+    @foreach (var person in Model)
+    {
+        <tr>
+            <td>@person.FirstName</td>
+            <td>@person.LastName</td>
+        </tr>
+    }
+</table>
+

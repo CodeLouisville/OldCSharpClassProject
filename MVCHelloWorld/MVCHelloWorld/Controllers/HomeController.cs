@@ -13,8 +13,8 @@ namespace MVCHelloWorld.Controllers
         {
             var person = new Person()
             {
-                FirstName = "bob",
-                LastName = "uncle"
+                FirstName = "",
+                LastName = ""
             };
             return View(person);
         }
@@ -26,18 +26,16 @@ namespace MVCHelloWorld.Controllers
             return View(person);
         }
 
-        public ActionResult About()
+        public ActionResult ShowMeAList()
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
+            List<Person> list = new List<Person>()
+            {
+                new Person() { FirstName="Luke", LastName="Skywalker" },
+                new Models.Person() { FirstName="Leia", LastName="Organa" },
+                new Person() { FirstName="Chewbacca", LastName=null }
+            };
+            return View("ShowMeAList", list);
         }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
     }
 }
