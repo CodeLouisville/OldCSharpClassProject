@@ -9,6 +9,13 @@ namespace MVCHelloWorld.Controllers
 {
     public class HomeController : Controller
     {
+        static List<Person> list = new List<Person>()
+            {
+                new Person() { FirstName="Luke", LastName="Skywalker" },
+                new Models.Person() { FirstName="Leia", LastName="Organa" },
+                new Person() { FirstName="Chewbacca", LastName=null }
+            };
+
         public ActionResult Index()
         {
             var person = new Person()
@@ -21,19 +28,14 @@ namespace MVCHelloWorld.Controllers
 
         public ActionResult SayHello(Person person)
         {
+            list.Add(person);
             person.FirstName = person.FirstName.ToUpperInvariant();
             person.LastName = person.LastName.ToUpperInvariant();
-            return View(person);
+            return View("ShowMeAList",list);
         }
 
         public ActionResult ShowMeAList()
         {
-            List<Person> list = new List<Person>()
-            {
-                new Person() { FirstName="Luke", LastName="Skywalker" },
-                new Models.Person() { FirstName="Leia", LastName="Organa" },
-                new Person() { FirstName="Chewbacca", LastName=null }
-            };
             return View("ShowMeAList", list);
         }
 
