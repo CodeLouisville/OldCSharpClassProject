@@ -8,5 +8,14 @@ namespace HogWarsh.Models
     public class Student
     {
         public string Name { get; set; }
+        public Species Species { get; set; }
     }
+
+    public enum Species
+    {
+        Feline, 
+        Canine,
+        Fishy
+    }
+
 }
