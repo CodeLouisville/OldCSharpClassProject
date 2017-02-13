@@ -3,5 +3,18 @@
     ViewBag.Title = "Enroll";
 }
 
-<h2>Enroll</h2>
-I really wrote this.
+<h2>What is your amazing student's information?</h2>
+
+<form method="POST" action="/student/actuallyenroll">
+
+    <div class="row">
+        <div class="md-col-6">Name:</div>
+        <div class="md-col-6"><input type="text" name="Name" /></div>
+    </div>
+
+    <div class="row">
+        <div class="md-col-12"><input type="submit" value="Enroll!" /></div>
+    </div>
+
+</form>
+
