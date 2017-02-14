@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HogWarsh", "HogWarsh\HogWarsh.csproj", "{BED24881-7C6E-43A7-AF94-B82F5AA01C6C}"
 EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Hogwarsh.Data", "Hogwarsh.Data\Hogwarsh.Data.sqlproj", "{CBACDE6E-FCEE-4E06-967A-44778913F11C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,12 @@ Global
 		{BED24881-7C6E-43A7-AF94-B82F5AA01C6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BED24881-7C6E-43A7-AF94-B82F5AA01C6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BED24881-7C6E-43A7-AF94-B82F5AA01C6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBACDE6E-FCEE-4E06-967A-44778913F11C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBACDE6E-FCEE-4E06-967A-44778913F11C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBACDE6E-FCEE-4E06-967A-44778913F11C}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{CBACDE6E-FCEE-4E06-967A-44778913F11C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBACDE6E-FCEE-4E06-967A-44778913F11C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBACDE6E-FCEE-4E06-967A-44778913F11C}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
