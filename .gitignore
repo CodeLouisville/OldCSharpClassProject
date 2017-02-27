@@ -250,3 +250,4 @@ paket-files/
 # JetBrains Rider
 .idea/
 *.sln.iml
+/HogWarsh/Hogwarsh.Data/Hogwarsh.Data.jfm

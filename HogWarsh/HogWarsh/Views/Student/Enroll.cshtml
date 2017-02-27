@@ -5,17 +5,21 @@
 
 <h2>What is your amazing student's information?</h2>
 
-@using (var form = @Html.BeginForm("actuallyenroll","student")) {
+@using (var form = @Html.BeginForm("actuallyenroll", "student"))
+{
 
     <div class="row">
         <div class="md-col-6">Name:</div>
-        <div class="md-col-6">@Html.TextBoxFor(x=>x.Name)</div>
+        <div class="md-col-6">
+            @Html.TextBoxFor(x => x.Name)
+            @Html.ValidationMessageFor(model => model.Name, "Required", new { @class = "text-danger" })
+        </div>
     </div>
 
     <div class="row">
-        @Html.DropDownListFor(x=>x.Species,
+        @Html.DropDownListFor(x => x.Species,
                     new SelectList(Enum.GetValues(typeof(HogWarsh.Models.Species))),
-                    "Select Species"                   )
+                    "Select Species")
     </div>
 
     <div class="row">

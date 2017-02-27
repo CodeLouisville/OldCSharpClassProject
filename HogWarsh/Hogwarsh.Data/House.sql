@@ -1,7 +1,7 @@
-﻿CREATE TABLE [dbo].[Student]
+﻿CREATE TABLE [dbo].[House]
 (
-	[Id] INT NOT NULL PRIMARY KEY, 
-	[Name] Varchar(30) NOT NULL, 
-	[Species] varchar(6) NOT NULL,
-	[HouseId] INT NULL
+	[Id] INT NOT NULL IDENTITY(1,1) , 
+	Name VARCHAR(30) NOT NULL, 
+
+	Description VARCHAR(500) NULL
 )
