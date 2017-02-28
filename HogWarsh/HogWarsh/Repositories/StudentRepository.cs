@@ -25,6 +25,8 @@ namespace HogWarsh.Repositories
                 var studentToUpdate = context.Students.Find(student.Id);
                 studentToUpdate.Name = student.Name;
                 studentToUpdate.Species = student.Species;
+                studentToUpdate.House = student.House;
+                context.Entry(studentToUpdate.House).State = System.Data.Entity.EntityState.Unchanged;
                 
                 context.SaveChanges();
             }
@@ -46,7 +48,18 @@ namespace HogWarsh.Repositories
             List<Student> students = new List<Student>();
             using (var context = new Context())
             {
-                students = context.Students.ToList();
+                students = context.Students.Include("House").ToList();
+            }
+
+            return students;
+        }
+
+        public List<Student> GetStudentsWithoutHouses()
+        {
+            List<Student> students = new List<Student>();
+            using (var context = new Context())
+            {
+                students = context.Students.Where(x => x.House == null).ToList();
             }
 
             return students;

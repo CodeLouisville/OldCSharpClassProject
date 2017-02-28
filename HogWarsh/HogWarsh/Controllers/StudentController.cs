@@ -6,7 +6,8 @@ namespace HogWarsh.Controllers
 {
     public class StudentController : Controller
     {
-        private StudentRepository repository;
+        private StudentRepository studentRepository;
+        private HouseRepository houseRepository;
 
         [HttpGet]
         public ActionResult Enroll()
@@ -22,58 +23,87 @@ namespace HogWarsh.Controllers
                 return View("Enroll");
             }
 
-            repository = new StudentRepository();
-            repository.Create(student);
+            studentRepository = new StudentRepository();
+            studentRepository.Create(student);
             return RedirectToAction("Students");
         }
 
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            repository = new StudentRepository();
-            var student = repository.GetById(id);
+            studentRepository = new StudentRepository();
+            var student = studentRepository.GetById(id);
             return View(student);
         }
 
         [HttpPost]
         public ActionResult Edit(Student student)
-        {
-            repository = new StudentRepository();
-            repository.Update(student);
+        {  
+            studentRepository = new StudentRepository();
+            studentRepository.Update(student);
             return RedirectToAction("Students");
         }
 
         [HttpGet]
         public ActionResult Students()
         {
-            repository = new StudentRepository();
-            var students = repository.GetAll();
+            studentRepository = new StudentRepository();
+            var students = studentRepository.GetAll();
 
             return View(students);
         }
 
         [HttpGet]
+        public ActionResult HouselessStudents()
+        {
+            studentRepository = new StudentRepository();
+            return View(studentRepository.GetStudentsWithoutHouses());
+        }
+
+        [HttpGet]
+        public ActionResult AssignHouse(int studentId)
+        {
+            houseRepository = new HouseRepository();
+            studentRepository = new StudentRepository();
+
+            var houses = houseRepository.GetAll();
+            var student = studentRepository.GetById(studentId);
+
+            var houseCount = houses.Count;
+
+            var random = new System.Random();
+            var houseNumber = random.Next(houseCount);
+
+            var chosenHouse = houses[houseNumber];
+            student.House = chosenHouse;
+
+            studentRepository.Update(student);
+
+            return RedirectToAction("Students");
+        }
+
+        [HttpGet]
         public ActionResult Delete(int id)
         {
-            repository = new StudentRepository();
-            var student = repository.GetById(id);
+            studentRepository = new StudentRepository();
+            var student = studentRepository.GetById(id);
             return View(student);
         }
 
         [HttpPost]
         public ActionResult Delete(Student student)
         {
-            repository = new StudentRepository();
-            repository.Delete(student.Id);
+            studentRepository = new StudentRepository();
+            studentRepository.Delete(student.Id);
             return RedirectToAction("Students");
         }
 
         [HttpGet]
         public ActionResult Details(int id)
         {
-            repository = new StudentRepository();
+            studentRepository = new StudentRepository();
 
-            return View(repository.GetById(id));
+            return View(studentRepository.GetById(id));
         }
     }
 }

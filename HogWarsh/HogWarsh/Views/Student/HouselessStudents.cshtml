@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<HogWarsh.Models.Student>
 
 <p>
-    @Html.ActionLink("Create New", "Enroll")
+    @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
@@ -10,9 +10,6 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Species)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.House)
         </th>
         <th></th>
     </tr>
@@ -26,12 +23,7 @@
             @Html.DisplayFor(modelItem => item.Species)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.House.Name)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Assign House", "AssignHouse", new { studentId = item.Id })
         </td>
     </tr>
 }
