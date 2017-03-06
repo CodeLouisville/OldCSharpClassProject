@@ -17,7 +17,7 @@ namespace HogWarsh.Repositories
                 context.SaveChanges();
             }
         }
-
+        
         public void Update(House house)
         {
             using (var context = new Context())

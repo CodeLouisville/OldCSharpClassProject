@@ -1,4 +1,5 @@
-﻿@{
+﻿@model HogWarsh.Models.HomeIndexViewModel
+@{
     ViewBag.Title = "Home Page";
 }
 
@@ -8,4 +9,20 @@
 
 <div class="row">
     To Enroll, @Html.ActionLink("click here!", "Enroll", "Student") click here!
+</div>
+
+<div class="row">
+    Here's what we have got!
+</div>
+<div class="row">
+    @foreach (var house in Model.Houses)
+    {
+        <div class="col-md-4 well">
+            <div style="color:@house.Color">@house.Name</div>
+            @foreach (var student in house.Students)
+            {
+                <div>@student.Name -- <i>@student.Species</i></div>
+            }
+        </div>
+    }
 </div>
