@@ -37,3 +37,12 @@
 }
 
 </table>
+
+@if (Model.Any(s=>s.House == null))
+{
+    <div>
+        You have @Model.Count(s=>s.House==null) Houseless Students! 
+        <br/>
+        <a href="@Url.Action("HouselessStudents","Student")">Assign Them</a>
+    </div>
+}
