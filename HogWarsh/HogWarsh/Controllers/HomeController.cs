@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HogWarsh.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,7 +11,27 @@ namespace HogWarsh.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            var vm = new HomeIndexViewModel()
+            {
+                Houses = new List<HomeIndexViewModel.HouseViewModel>()
+                {
+                    new HomeIndexViewModel.HouseViewModel()
+                    {
+                        Id=1, 
+                        Name = "FOO House", 
+                        Students = new List<Student>()
+                        {
+                            new Student()
+                            {
+                                Id=11, 
+                                Name="Bob",
+                                Species = Species.Canine.ToString()
+                            }
+                        }
+                    }
+                }
+            };
+            return View(vm);
         }
 
         public ActionResult About()
