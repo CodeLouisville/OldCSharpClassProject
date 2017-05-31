@@ -1,9 +1,12 @@
 ﻿using Contacto.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Dapper;
 
 namespace Contacto.Controllers
 {
@@ -45,23 +48,60 @@ namespace Contacto.Controllers
         {
             return View("ContactList", _contactRepository.Contacts);
         }
+
+        public ActionResult EditContact(int id)
+        {
+            return View("EditContact", _contactRepository.GetContact(id));
+        }
+
+        public ActionResult ChangeContact(Contact contact)
+        {
+            _contactRepository.EditContact(contact);
+            return View("ContactList", _contactRepository.Contacts);
+        }
     }
 
     public class ContactRepository
     {
-        private List<Contact> _contacts = new List<Contact>();
 
         public void AddContact(Contact contact)
         {
-            _contacts.Add(contact);
+            using (var connection = CreateConnection())
+            {
+                connection.Execute("INSERT INTO CONTACTS (LASTNAME, FIRSTNAME) VALUES (@lastname, @firstname)", new { lastname = contact.LastName, firstname = contact.FirstName });
+            }
         }
 
         public List<Contact> Contacts
         {
             get
             {
-                return _contacts;
+                using (var connection = CreateConnection())
+                {
+                    return connection.Query<Contact>("SELECT * FROM CONTACTS").ToList();
+                }
             }
+        }
+
+        public Contact GetContact(int id)
+        {
+            using (var connection = CreateConnection())
+            {
+                return connection.QuerySingle<Contact>("SELECT * FROM CONTACTS WHERE ID = @contactid", new { contactid = id });
+            }
+        }
+
+        public void EditContact(Contact contact)
+        {
+            using (var connection = CreateConnection())
+            {
+                connection.Execute("UPDATE CONTACTS SET LASTNAME = @lastname, FIRSTNAME = @firstname where ID = @id", new { lastname = contact.LastName, firstname = contact.FirstName, id = contact.ID });
+            }
+        }
+
+        private IDbConnection CreateConnection()
+        {
+            return new SqlConnection("Server=(localdb)\\mssqllocaldb;Database=Contacto;Trusted_Connection=True");
         }
     }
 }

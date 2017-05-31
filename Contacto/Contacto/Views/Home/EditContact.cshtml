@@ -1,0 +1,19 @@
+﻿@model Contacto.Models.Contact
+@{
+    ViewBag.Title = "Edit Contact";
+}
+
+<h2>Edit Contact</h2>
+
+<div class="jumbotron">
+    <h1>Enter a name</h1>
+    @using (var form = Html.BeginForm("ChangeContact", "Home"))
+    {
+        @Html.HiddenFor(x => x.ID);
+        <p>First Name: @Html.TextBoxFor(x => x.FirstName)</p>
+        <br/>
+        <p>Last Name: @Html.TextBoxFor(x => x.LastName)</p>
+        <input type="submit" value="Edit Contact" name="submitContact"/>
+    }
+</div>
+
