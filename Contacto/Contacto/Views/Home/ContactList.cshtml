@@ -1,0 +1,21 @@
+﻿@model List<Contacto.Models.Contact>
+@{
+    ViewBag.Title = "ContactList";
+}
+
+<h2>List of Contacts</h2>
+<table class="table table-striped">
+    <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+    </tr>
+    @foreach( var contact in Model)
+    {
+        <tr>
+            <td>@contact.FirstName</td>
+            <td>@contact.LastName</td>
+        </tr>
+    }
+</table>
+
+

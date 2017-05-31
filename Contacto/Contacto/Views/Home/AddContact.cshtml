@@ -1,0 +1,18 @@
+﻿@model Contacto.Models.Contact
+@{
+    ViewBag.Title = "AddContact";
+}
+
+<h2>AddContact</h2>
+
+<div class="jumbotron">
+    <h1>Enter a name</h1>
+    @using (var form = Html.BeginForm("AddContact", "Home"))
+    {
+        <p>First Name: @Html.TextBoxFor(x => x.FirstName)</p>
+        <br/>
+        <p>Last Name: @Html.TextBoxFor(x => x.LastName)</p>
+        <input type="submit" value="Add Contact" name="submitContact"/>
+    }
+</div>
+
